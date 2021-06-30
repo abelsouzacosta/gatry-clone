@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import PagesPromotionSearch from "./Promotion/Search/Search";
+import PagesPromotionForm from "./Promotion/Form/Form";
 
 /**
  * Componente raiz da aplicação
@@ -11,6 +12,9 @@ const Root = () => {
   return (
     <Router>
       <Switch>
+        <Route path="/create" exact>
+          <PagesPromotionForm />
+        </Route>
         <Route path="/">
           <PagesPromotionSearch />
         </Route>
