@@ -15,6 +15,9 @@ const Root = () => {
         <Route path="/create" exact>
           <PagesPromotionForm />
         </Route>
+        <Route path="/edit/:id">
+          <PagesPromotionForm />
+        </Route>
         <Route path="/">
           <PagesPromotionSearch />
         </Route>
