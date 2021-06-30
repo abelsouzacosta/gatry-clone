@@ -4,13 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+import Root from "pages/Root";
+
 /**
  * ReactDOM receb o elemento "raiz" da aplicação e onde
  * o mesmo será renderizado dentro do html (em public/index.html)
  */
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Root />
   </React.StrictMode>,
   document.getElementById("root")
 );
