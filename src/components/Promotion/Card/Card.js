@@ -19,7 +19,7 @@ const PromotionCard = ({ promotionApiResponse }) => {
           {promotionApiResponse.comments.length > 0 && (
             // verifica se há algum comentário e se houver vai
             // renderizar uma div que mostra o primeiro comentário escrito
-            <div>{promotionApiResponse.comments[0].comment}</div>
+            <div>"{promotionApiResponse.comments[0].comment}"</div>
           )}
 
           <div>
