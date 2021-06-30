@@ -28,7 +28,9 @@ const PromotionCard = ({ promotionApiResponse }) => {
               ? "Comentários"
               : "Comentário"}
           </div>
-          <a href={promotionApiResponse.url}>IR PARA O SITE</a>
+          <a href={promotionApiResponse.url} target="_blank" rel="noreferrer">
+            IR PARA O SITE
+          </a>
         </footer>
       </div>
     </div>
