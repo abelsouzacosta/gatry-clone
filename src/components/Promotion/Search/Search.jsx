@@ -24,7 +24,10 @@ const PromotionSearch = () => {
     // se houver busca ele vai buscar o que está escrito no titulo
     // axios recebe a url e um objeto de configuração
     axios
-      .get("http://localhost:5000/promotions?_embed=comments", { params })
+      .get(
+        "http://localhost:5000/promotions?_embed=comments&_order=desc&_sort=id",
+        { params }
+      )
       .then((response) => setPromotions(response.data));
   }, [search]);
 
