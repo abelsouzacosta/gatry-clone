@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
-
-// estilos
-import "./Search.css";
-
-// componentes
-import PromotionCard from "components/Promotion/Card/Card";
-
 import axios from "axios";
 
-const PagesPromotionSearch = () => {
+// componentes
+import PromotionCard from "../Card/Card";
+
+const PromotionSearch = () => {
   const [promotions, setPromotions] = useState([]);
 
   useEffect(() => {
@@ -18,7 +14,7 @@ const PagesPromotionSearch = () => {
   }, []);
 
   return (
-    <div className="main">
+    <div>
       {promotions.length > 0 &&
         promotions.map((promotion) => {
           return <PromotionCard promotionApiResponse={promotion} />;
@@ -27,4 +23,4 @@ const PagesPromotionSearch = () => {
   );
 };
 
-export default PagesPromotionSearch;
+export default PromotionSearch;
