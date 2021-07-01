@@ -40,11 +40,8 @@ const PromotionForm = () => {
     // de maneira que os valores não são enviados
     // pela url
     event.preventDefault();
-    axios({
-      method: "POST",
-      url: "http://localhost:5000/promotions",
-      data: values,
-    }).then((response) => {
+    // data recebe values
+    axios.post("http://localhost:5000/promotions", values).then((response) => {
       history.push("/");
     });
   }
