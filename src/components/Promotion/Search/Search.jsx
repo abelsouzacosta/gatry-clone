@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 // componentes
-import PromotionCard from "../Card/Card";
+import PromotionList from "../List/List";
 
 // estilo
 import "./Search.css";
@@ -43,15 +43,7 @@ const PromotionSearch = () => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      {promotions.length > 0 &&
-        promotions.map((promotion) => {
-          return (
-            <PromotionCard
-              key={promotion.id}
-              promotionApiResponse={promotion}
-            />
-          );
-        })}
+      <PromotionList promotions={promotions} loading={!promotions.length > 0} />
     </div>
   );
 };
