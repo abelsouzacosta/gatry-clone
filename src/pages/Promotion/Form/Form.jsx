@@ -1,7 +1,5 @@
 import React from "react";
 
-const PagesPromotionForm = () => {
-  return null;
-};
+const PagesPromotionForm = () => {};
 
 export default PagesPromotionForm;
