@@ -1,16 +1,14 @@
 import React from "react";
 
-// estilos
-import "./Search.css";
-
 // componentes
+import UIContainer from "components/UI/Container/Container";
 import PromotionSearch from "components/Promotion/Search/Search";
 
 const PagesPromotionSearch = () => {
   return (
-    <div className="main">
+    <UIContainer>
       <PromotionSearch />
-    </div>
+    </UIContainer>
   );
 };
 
