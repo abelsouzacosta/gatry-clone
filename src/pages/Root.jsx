@@ -12,7 +12,7 @@ const Root = () => {
   return (
     <Router>
       <Switch>
-        <Route path="/create" exact>
+        <Route path="/create">
           <PagesPromotionForm />
         </Route>
         <Route path="/edit/:id">
