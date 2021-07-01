@@ -10,12 +10,23 @@ import "./Search.css";
 
 const PromotionSearch = () => {
   const [promotions, setPromotions] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
+    const params = {};
+
+    // determina que o parametro 'title' é igual
+    // a busca
+    if (search) {
+      params.title_like = search;
+    }
+
+    // se houver busca ele vai buscar o que está escrito no titulo
+    // axios recebe a url e um objeto de configuração
     axios
-      .get("http://localhost:5000/promotions?_embed=comments")
+      .get("http://localhost:5000/promotions?_embed=comments", { params })
       .then((response) => setPromotions(response.data));
-  }, []);
+  }, [search]);
 
   return (
     <div className="promotion-search">
@@ -29,6 +40,8 @@ const PromotionSearch = () => {
         id="search"
         className="promotion-search__input"
         placeholder="Buscar..."
+        value={search}
+        onChange={(event) => setSearch(event.target.value)}
       />
       {promotions.length > 0 &&
         promotions.map((promotion) => {
