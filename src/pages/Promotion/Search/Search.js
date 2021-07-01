@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // estilos
 import "./Search.css";
@@ -6,7 +6,17 @@ import "./Search.css";
 // componentes
 import PromotionCard from "components/Promotion/Card/Card";
 
+import axios from "axios";
+
 const PagesPromotionSearch = () => {
+  const [promotionList, setPromotionList] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/promotions?_embed=comments")
+      .then((response) => setPromotionList(response.data));
+  }, []);
+
   const promotionApiReturnResponse = {
     id: 1,
     title:
@@ -26,6 +36,12 @@ const PagesPromotionSearch = () => {
   return (
     <div className="main">
       <PromotionCard promotionApiResponse={promotionApiReturnResponse} />
+      {promotionList.length > 0 &&
+        promotionList.map((promotionApiReturnResponse) => {
+          return (
+            <PromotionCard promotionApiResponse={promotionApiReturnResponse} />
+          );
+        })}
     </div>
   );
 };
