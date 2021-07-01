@@ -17,7 +17,12 @@ const PromotionSearch = () => {
     <div>
       {promotions.length > 0 &&
         promotions.map((promotion) => {
-          return <PromotionCard promotionApiResponse={promotion} />;
+          return (
+            <PromotionCard
+              key={promotion.id}
+              promotionApiResponse={promotion}
+            />
+          );
         })}
     </div>
   );
