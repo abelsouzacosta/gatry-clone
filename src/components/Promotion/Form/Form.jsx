@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 import "./Form.css";
+import { useEffect } from "react/cjs/react.production.min";
 
 // valoes iniciais do formulário
 const initialFormValues = {
@@ -14,7 +15,7 @@ const initialFormValues = {
   price: 0,
 };
 
-const PromotionForm = () => {
+const PromotionForm = (id) => {
   // inicia um estado com o objeto inicial
   const [values, setValues] = useState(initialFormValues);
   const history = useHistory();
