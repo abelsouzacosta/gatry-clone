@@ -47,12 +47,18 @@ const PromotionForm = ({ id }) => {
     // id ? alteração : inserção
     const method = id ? "put" : "post";
 
+    // determinando para qual url a requisição será feita
+    // post -> /promotions
+    // put -> /promotions/:id
+    const url = id
+      ? `http://localhost:5000/promotions/${id}`
+      : "http://localhost:5000/promotions/";
+
+    // valores (values) podem ser mantidos pois são atualizados por desestruturação
+
     // a palavra method determina o que vai ser utilizado
     // data recebe values
-    axios[method](
-      `http://localhost:5000/promotions${id ? `/${id}` : ``}`,
-      values
-    ).then((response) => {
+    axios[method](url, values).then((response) => {
       history.push("/");
     });
   }
