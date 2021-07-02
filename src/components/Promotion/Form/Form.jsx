@@ -28,7 +28,6 @@ const PromotionForm = ({ id }) => {
   const [save, saveInfo] = useApi({
     url: id ? `promotions/${id}` : "promotions/",
     method: id ? "put" : "post",
-    data: values,
     onCompleted: (response) => {
       if (!response.error) history.push("/");
     },
@@ -51,7 +50,9 @@ const PromotionForm = ({ id }) => {
 
   function onSubmit(event) {
     event.preventDefault();
-    save();
+    save({
+      data: values,
+    });
   }
 
   /**
