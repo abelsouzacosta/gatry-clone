@@ -34,12 +34,20 @@ export default function useApi(config) {
       loading: true,
     });
 
-    const response = await axios(config);
+    let response = null;
 
-    setRequestInfo({
-      ...initialRequestInfo,
-      data: response.data,
-    });
+    try {
+      response = await axios(config);
+
+      setRequestInfo({
+        ...initialRequestInfo,
+        data: response.data,
+      });
+    } catch (error) {
+      setRequestInfo({
+        ...initialRequestInfo,
+      });
+    }
 
     if (config.onCompleted) {
       config.onCompleted(response);
