@@ -24,6 +24,7 @@ const PromotionSearch = () => {
 
   useEffect(() => {
     load();
+    // eslint-disable-next-line
   }, [search]);
 
   return (
