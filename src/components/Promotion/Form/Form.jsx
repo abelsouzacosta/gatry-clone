@@ -40,8 +40,19 @@ const PromotionForm = ({ id }) => {
     // de maneira que os valores não são enviados
     // pela url
     event.preventDefault();
+
+    // determina o método que vai ser utilizado na requisição
+    // post -> inserção
+    // put -> alteração
+    // id ? alteração : inserção
+    const method = id ? "put" : "post";
+
+    // a palavra method determina o que vai ser utilizado
     // data recebe values
-    axios.post("http://localhost:5000/promotions", values).then((response) => {
+    axios[method](
+      `http://localhost:5000/promotions${id ? `/${id}` : ``}`,
+      values
+    ).then((response) => {
       history.push("/");
     });
   }
