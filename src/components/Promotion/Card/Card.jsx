@@ -2,6 +2,8 @@ import React from "react";
 
 import "./Card.css";
 
+import { Link } from "react-router-dom";
+
 /**
  * recebe um objeto retornado da api e renderiza dentro do card da aplicação
  *
@@ -39,6 +41,7 @@ const PromotionCard = ({ promotion }) => {
           >
             IR PARA O SITE
           </a>
+          <Link to={`/edit/${promotion.id}`}>Editar</Link>
         </footer>
       </div>
     </div>

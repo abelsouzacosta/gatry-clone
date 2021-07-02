@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 // axios
 import axios from "axios";
 
 import "./Form.css";
-import { useEffect } from "react/cjs/react.production.min";
 
 // valoes iniciais do formulário
 const initialFormValues = {
@@ -15,7 +14,7 @@ const initialFormValues = {
   price: 0,
 };
 
-const PromotionForm = (id) => {
+const PromotionForm = ({ id }) => {
   // inicia um estado com o objeto inicial
   const [values, setValues] = useState(initialFormValues);
   const history = useHistory();
@@ -46,6 +45,18 @@ const PromotionForm = (id) => {
       history.push("/");
     });
   }
+
+  /**
+   * Busca por uma promoção se houver alguma promoção
+   * com o id especificado de forma com que l
+   */
+  useEffect(() => {
+    if (id)
+      axios.get(`http://localhost:5000/promotions/${id}`).then((response) => {
+        setValues(response.data);
+        console.log(response.data);
+      });
+  }, [id]);
 
   return (
     <div>
