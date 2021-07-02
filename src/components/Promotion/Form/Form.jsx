@@ -70,6 +70,7 @@ const PromotionForm = ({ id }) => {
       <p>Nova promoção</p>
 
       <form onSubmit={onSubmit}>
+        {saveInfo.loading && <div>Salvando dados</div>}
         <div className="promotion-form__group">
           <label htmlFor="title">Título</label>
           <input
