@@ -42,7 +42,11 @@ const PromotionSearch = () => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      <PromotionList promotions={loadInfo.data} loading={loadInfo.loading} />
+      <PromotionList
+        promotions={loadInfo.data}
+        error={loadInfo.error}
+        loading={loadInfo.loading}
+      />
     </div>
   );
 };
