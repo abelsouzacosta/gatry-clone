@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
 // axios
@@ -14,7 +14,7 @@ const initialFormValues = {
   price: 0,
 };
 
-const PromotionForm = () => {
+const PromotionForm = ({ id }) => {
   // inicia um estado com o objeto inicial
   const [values, setValues] = useState(initialFormValues);
   const history = useHistory();
@@ -40,11 +40,38 @@ const PromotionForm = () => {
     // de maneira que os valores não são enviados
     // pela url
     event.preventDefault();
+
+    // determina o método que vai ser utilizado na requisição
+    // post -> inserção
+    // put -> alteração
+    // id ? alteração : inserção
+    const method = id ? "put" : "post";
+
+    // determinando para qual url a requisição será feita
+    // post -> /promotions
+    // put -> /promotions/:id
+    const url = id
+      ? `http://localhost:5000/promotions/${id}`
+      : "http://localhost:5000/promotions/";
+
+    // valores (values) podem ser mantidos pois são atualizados por desestruturação
+
+    // a palavra method determina o que vai ser utilizado
     // data recebe values
-    axios.post("http://localhost:5000/promotions", values).then((response) => {
+    axios[method](url, values).then((response) => {
       history.push("/");
     });
   }
+
+  /**
+   * se houver um id vai buscar pela promoção dentro do banco de dados
+   */
+  useEffect(() => {
+    if (id)
+      axios.get(`http://localhost:5000/promotions/${id}`).then((response) => {
+        setValues(response.data);
+      });
+  }, [id]);
 
   return (
     <div>
@@ -54,12 +81,24 @@ const PromotionForm = () => {
       <form onSubmit={onSubmit}>
         <div className="promotion-form__group">
           <label htmlFor="title">Título</label>
-          <input type="text" name="title" id="title" onChange={onChange} />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value={values.title}
+            onChange={onChange}
+          />
         </div>
 
         <div className="promotion-form__group">
           <label htmlFor="url">Link</label>
-          <input type="text" name="url" id="url" onChange={onChange} />
+          <input
+            type="text"
+            name="url"
+            id="url"
+            value={values.url}
+            onChange={onChange}
+          />
         </div>
 
         <div className="promotion-form__group">
@@ -68,13 +107,20 @@ const PromotionForm = () => {
             type="text"
             name="imageUrl"
             id="imageUrl"
+            value={values.imageUrl}
             onChange={onChange}
           />
         </div>
 
         <div className="promotion-form__group">
           <label htmlFor="price">Preço</label>
-          <input type="text" name="price" id="price" onChange={onChange} />
+          <input
+            type="text"
+            name="price"
+            id="price"
+            value={values.price}
+            onChange={onChange}
+          />
         </div>
 
         <div>
