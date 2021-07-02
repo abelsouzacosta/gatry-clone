@@ -47,14 +47,12 @@ const PromotionForm = ({ id }) => {
   }
 
   /**
-   * Busca por uma promoção se houver alguma promoção
-   * com o id especificado de forma com que l
+   * se houver um id vai buscar pela promoção dentro do banco de dados
    */
   useEffect(() => {
     if (id)
       axios.get(`http://localhost:5000/promotions/${id}`).then((response) => {
         setValues(response.data);
-        console.log(response.data);
       });
   }, [id]);
 
@@ -66,12 +64,24 @@ const PromotionForm = ({ id }) => {
       <form onSubmit={onSubmit}>
         <div className="promotion-form__group">
           <label htmlFor="title">Título</label>
-          <input type="text" name="title" id="title" onChange={onChange} />
+          <input
+            type="text"
+            name="title"
+            id="title"
+            value={values.title}
+            onChange={onChange}
+          />
         </div>
 
         <div className="promotion-form__group">
           <label htmlFor="url">Link</label>
-          <input type="text" name="url" id="url" onChange={onChange} />
+          <input
+            type="text"
+            name="url"
+            id="url"
+            value={values.url}
+            onChange={onChange}
+          />
         </div>
 
         <div className="promotion-form__group">
@@ -80,13 +90,20 @@ const PromotionForm = ({ id }) => {
             type="text"
             name="imageUrl"
             id="imageUrl"
+            value={values.imageUrl}
             onChange={onChange}
           />
         </div>
 
         <div className="promotion-form__group">
           <label htmlFor="price">Preço</label>
-          <input type="text" name="price" id="price" onChange={onChange} />
+          <input
+            type="text"
+            name="price"
+            id="price"
+            value={values.price}
+            onChange={onChange}
+          />
         </div>
 
         <div>
