@@ -5,22 +5,21 @@ import { Link } from "react-router-dom";
 // componentes
 import PromotionList from "../List/List";
 
+import useApi from "components/utils/useApi";
+
 // estilo
 import "./Search.css";
 
 const PromotionSearch = () => {
-  const [promotions, setPromotions] = useState([]);
   const [search, setSearch] = useState("");
   const [load, loadInfo] = useApi({
     url: "http://localhost:5000/promotions",
+    method: "get",
     params: {
       _embed: "comments",
       _order: "desc",
       _sort: "id",
       title_like: search || undefined,
-    },
-    onCompleted: (response) => {
-      setPromotions(response.data);
     },
   });
 
@@ -43,7 +42,7 @@ const PromotionSearch = () => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      <PromotionList promotions={promotions} loading={!promotions.length > 0} />
+      <PromotionList promotions={loadInfo.data} loading={loadInfo.loading} />
     </div>
   );
 };
