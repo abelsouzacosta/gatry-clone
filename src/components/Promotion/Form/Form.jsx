@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import useApi from "components/utils/useApi";
 
 // axios
 import axios from "axios";
@@ -18,6 +19,23 @@ const PromotionForm = ({ id }) => {
   // inicia um estado com o objeto inicial
   const [values, setValues] = useState(initialFormValues);
   const history = useHistory();
+  // usado para carregar informação na tela
+  const [load] = useApi({
+    url: `/promotions/${id}`,
+    method: "get",
+    onCompleted: (response) => {
+      setValues(response.data);
+    },
+  });
+  // usado para fazer o submit do formulário
+  const [save, saveInfo] = useApi({
+    url: id ? `promotions/${id}` : "promotions/",
+    method: id ? "put" : "post",
+    data: values,
+    onCompleted: (response) => {
+      if (!response.error) history.push("/");
+    },
+  });
 
   /**
    * função a ser chamada para a atualização do valor do estado
@@ -35,42 +53,15 @@ const PromotionForm = ({ id }) => {
   }
 
   function onSubmit(event) {
-    // não faz o submit através de 'get'
-    // deve ser feito por post
-    // de maneira que os valores não são enviados
-    // pela url
     event.preventDefault();
-
-    // determina o método que vai ser utilizado na requisição
-    // post -> inserção
-    // put -> alteração
-    // id ? alteração : inserção
-    const method = id ? "put" : "post";
-
-    // determinando para qual url a requisição será feita
-    // post -> /promotions
-    // put -> /promotions/:id
-    const url = id
-      ? `http://localhost:5000/promotions/${id}`
-      : "http://localhost:5000/promotions/";
-
-    // valores (values) podem ser mantidos pois são atualizados por desestruturação
-
-    // a palavra method determina o que vai ser utilizado
-    // data recebe values
-    axios[method](url, values).then((response) => {
-      history.push("/");
-    });
+    save();
   }
 
   /**
    * se houver um id vai buscar pela promoção dentro do banco de dados
    */
   useEffect(() => {
-    if (id)
-      axios.get(`http://localhost:5000/promotions/${id}`).then((response) => {
-        setValues(response.data);
-      });
+    if (id) load();
   }, [id]);
 
   return (
