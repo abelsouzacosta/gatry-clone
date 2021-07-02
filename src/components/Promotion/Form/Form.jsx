@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import useApi from "components/utils/useApi";
 
-// axios
-import axios from "axios";
-
 import "./Form.css";
 
 // valoes iniciais do formulário
