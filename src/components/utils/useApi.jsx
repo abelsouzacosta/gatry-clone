@@ -28,7 +28,7 @@ const initialRequestInfo = {
 export default function useApi(config) {
   const [requestInfo, setRequestInfo] = useState(initialRequestInfo);
 
-  async function call() {
+  async function call(localConfig) {
     setRequestInfo({
       ...initialRequestInfo,
       loading: true,
@@ -40,6 +40,7 @@ export default function useApi(config) {
       response = await axios({
         baseURL: "http://localhost:5000",
         ...config,
+        ...localConfig,
       });
 
       setRequestInfo({
