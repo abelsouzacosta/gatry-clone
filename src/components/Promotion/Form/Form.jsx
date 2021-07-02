@@ -62,6 +62,8 @@ const PromotionForm = ({ id }) => {
    */
   useEffect(() => {
     if (id) load();
+
+    // eslint-disable-next-line
   }, [id]);
 
   return (
