@@ -1,34 +1,30 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 
 // componentes
 import PromotionList from "../List/List";
 
+import useApi from "components/utils/useApi";
+
 // estilo
 import "./Search.css";
 
 const PromotionSearch = () => {
-  const [promotions, setPromotions] = useState([]);
   const [search, setSearch] = useState("");
+  const [load, loadInfo] = useApi({
+    url: "/promotions",
+    method: "get",
+    params: {
+      _embed: "comments",
+      _order: "desc",
+      _sort: "id",
+      title_like: search || undefined,
+    },
+  });
 
   useEffect(() => {
-    const params = {};
-
-    // determina que o parametro 'title' é igual
-    // a busca
-    if (search) {
-      params.title_like = search;
-    }
-
-    // se houver busca ele vai buscar o que está escrito no titulo
-    // axios recebe a url e um objeto de configuração
-    axios
-      .get(
-        "http://localhost:5000/promotions?_embed=comments&_order=desc&_sort=id",
-        { params }
-      )
-      .then((response) => setPromotions(response.data));
+    load();
+    // eslint-disable-next-line
   }, [search]);
 
   return (
@@ -46,7 +42,11 @@ const PromotionSearch = () => {
         value={search}
         onChange={(event) => setSearch(event.target.value)}
       />
-      <PromotionList promotions={promotions} loading={!promotions.length > 0} />
+      <PromotionList
+        promotions={loadInfo.data}
+        error={loadInfo.error}
+        loading={loadInfo.loading}
+      />
     </div>
   );
 };
