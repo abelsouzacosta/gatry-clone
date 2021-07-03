@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 
 // componentes
@@ -10,6 +10,7 @@ import useApi from "components/utils/useApi";
 import "./Search.css";
 
 const PromotionSearch = () => {
+  const mountRef = useRef(null);
   const [search, setSearch] = useState("");
   const [load, loadInfo] = useApi({
     url: "/promotions",
@@ -20,10 +21,15 @@ const PromotionSearch = () => {
       _sort: "id",
       title_like: search || undefined,
     },
+    debouncedDelay: 300,
   });
 
   useEffect(() => {
-    load();
+    load({
+      debounced: mountRef.current,
+    });
+
+    if (!mountRef.current) mountRef.current = true;
     // eslint-disable-next-line
   }, [search]);
 
