@@ -34,6 +34,10 @@
 .promotion-card__comment {
   color: #85a5a6;
   font-weight: 700;
+  max-width: 345px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* empurra o contador para o canto direito */
