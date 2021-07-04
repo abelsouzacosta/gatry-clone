@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
  *
  * o objeto contem imagem, titulo, preço, e um array de comentários
  */
-const PromotionCard = ({ promotion }) => {
+const PromotionCard = ({ promotion, onClickComments }) => {
   return (
     <div className="promotion-card">
       <img
@@ -29,10 +29,13 @@ const PromotionCard = ({ promotion }) => {
             </div>
           )}
 
-          <div className="promotion-card__comments-count">
+          <button
+            className="promotion-card__comments-count"
+            onClick={onClickComments}
+          >
             {promotion.comments.length}{" "}
             {promotion.comments.length > 1 ? "Comentários" : "Comentário"}
-          </div>
+          </button>
           <a
             href={promotion.url}
             target="_blank"
@@ -41,7 +44,12 @@ const PromotionCard = ({ promotion }) => {
           >
             IR PARA O SITE
           </a>
-          <Link to={`/edit/${promotion.id}`}>Editar</Link>
+          <Link
+            to={`/edit/${promotion.id}`}
+            className="promotion-card__edit-button"
+          >
+            Editar
+          </Link>
         </footer>
       </div>
     </div>
