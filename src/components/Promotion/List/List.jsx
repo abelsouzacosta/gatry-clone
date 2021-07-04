@@ -33,7 +33,10 @@ const PromotionList = ({ loading, error, promotions }) => {
           />
         );
       })}
-      <UIModal isOpen={Boolean(promotionId)}>
+      <UIModal
+        isOpen={Boolean(promotionId)}
+        onClickClose={() => setPromotionId(null)}
+      >
         <h1>Comentários no modal</h1>
       </UIModal>
     </div>
