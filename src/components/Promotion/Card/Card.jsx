@@ -44,7 +44,12 @@ const PromotionCard = ({ promotion, onClickComments }) => {
           >
             IR PARA O SITE
           </a>
-          <Link to={`/edit/${promotion.id}`}>Editar</Link>
+          <Link
+            to={`/edit/${promotion.id}`}
+            className="promotion-card__edit-button"
+          >
+            Editar
+          </Link>
         </footer>
       </div>
     </div>
