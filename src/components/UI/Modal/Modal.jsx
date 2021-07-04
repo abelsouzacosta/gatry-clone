@@ -4,7 +4,9 @@ import ReactDOM from "react-dom";
 
 import "./Modal.css";
 
-const UIModal = ({ children }) => {
+const UIModal = ({ isOpen, children }) => {
+  if (!isOpen) return null;
+
   return ReactDOM.createPortal(
     <div className="ui-modal__overlay">
       <div className="ui-modal">
