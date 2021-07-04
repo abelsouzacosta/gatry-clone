@@ -44,6 +44,7 @@
   background: transparent;
   border: transparent;
   outline: none;
+  white-space: nowrap;
 }
 
 .promotion-card__link {
@@ -52,6 +53,7 @@
   color: #3498db;
   text-decoration: none;
   padding: 8px 10px;
+  white-space: nowrap;
 }
 
 .promotion-card__info {
@@ -65,4 +67,10 @@
   text-decoration: none;
   padding: 8px 10px;
   margin-left: 10px;
+}
+
+.promotion-card__link:hover,
+.promotion-card__edit-button:hover {
+  background: #3498db;
+  color: white;
 }
