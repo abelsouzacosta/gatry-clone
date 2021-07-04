@@ -23,3 +23,11 @@
   grid-row-start: 2;
   grid-column-start: 2;
 }
+
+.ui-modal__close-button {
+  float: right;
+  background: transparent;
+  border: transparent;
+  font-size: 18px;
+  padding: 15px;
+}

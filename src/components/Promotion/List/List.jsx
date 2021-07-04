@@ -1,6 +1,8 @@
 import React from "react";
 import PromotionCard from "../Card/Card";
 
+import UIModal from "components/UI/Modal/Modal";
+
 // estilos
 import "./List.css";
 
@@ -21,6 +23,9 @@ const PromotionList = ({ loading, error, promotions }) => {
       {promotions.map((promotion) => {
         return <PromotionCard key={promotion.id} promotion={promotion} />;
       })}
+      <UIModal isOpen={true}>
+        <h1>Comentários no modal</h1>
+      </UIModal>
     </div>
   );
 };
