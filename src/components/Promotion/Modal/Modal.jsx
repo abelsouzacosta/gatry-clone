@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
 import UIModal from "components/UI/Modal/Modal";
+import PromotionModalCommentsTree from "./CommentsTree/CommentsTree";
 
 import useApi from "components/utils/useApi";
 
@@ -19,7 +20,7 @@ const PromotionModal = ({ promotionId, onClickClose }) => {
 
   return (
     <UIModal isOpen onClickClose={onClickClose}>
-      <h1>Comentários no modal</h1>
+      <PromotionModalCommentsTree comments={loadInfo.data} />
     </UIModal>
   );
 };
