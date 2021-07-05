@@ -12,8 +12,18 @@ const PromotionModalCommentsTree = ({ comments }) => {
     <ul className="promotion-modal-comments-tree">
       {comments.map((item) => {
         return (
-          <li>
-            <p>{item.comment}</p>
+          <li className="promotion-modal-comments-tree__item">
+            <img
+              src={item.user.avatarUrl}
+              alt={`perfil de ${item.user.name}`}
+              className="promotion-modal-comments-tree__item__avatar"
+            />
+            <div className="promotion-modal-comments-tree__item__info">
+              <span className="promotion-modal-comments-tree__item__name">
+                {item.user.name}
+              </span>
+              <p>{item.comment}</p>
+            </div>
           </li>
         );
       })}

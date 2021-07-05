@@ -10,6 +10,7 @@ const PromotionModal = ({ promotionId, onClickClose }) => {
     url: `/comments`,
     params: {
       promotionId,
+      _expand: "user",
     },
   });
 
