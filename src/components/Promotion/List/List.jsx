@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import PromotionCard from "../Card/Card";
 
-import UIModal from "components/UI/Modal/Modal";
 import PromotionModal from "../Modal/Modal";
 
 // estilos
