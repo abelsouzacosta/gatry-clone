@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PromotionCard from "../Card/Card";
 
 import UIModal from "components/UI/Modal/Modal";
+import PromotionModal from "../Modal/Modal";
 
 // estilos
 import "./List.css";
@@ -33,12 +34,10 @@ const PromotionList = ({ loading, error, promotions }) => {
           />
         );
       })}
-      <UIModal
-        isOpen={Boolean(promotionId)}
-        onClickClose={() => setPromotionId(null)}
-      >
-        <h1>Comentários no modal</h1>
-      </UIModal>
+      <PromotionModal
+        promotionId={promotionId}
+        setPromotionId={setPromotionId}
+      />
     </div>
   );
 };
