@@ -38,15 +38,17 @@ export default function useApi(config) {
     });
 
     let response = null;
-    const makeRequest = localConfig.debounced ? debouncedAxios : axios;
+
+    const finalConfig = {
+      baseURL: "http://localhost:5000",
+      ...config,
+      ...localConfig,
+    };
+
+    const makeRequest = finalConfig.debounced ? debouncedAxios : axios;
 
     try {
-      response = await makeRequest({
-        baseURL: "http://localhost:5000",
-        ...config,
-        ...localConfig,
-      });
-
+      response = await makeRequest(finalConfig);
       setRequestInfo({
         ...initialRequestInfo,
         data: response.data,
@@ -54,6 +56,7 @@ export default function useApi(config) {
     } catch (error) {
       setRequestInfo({
         ...initialRequestInfo,
+        error,
       });
     }
 
