@@ -14,11 +14,11 @@ const PromotionModal = ({ promotionId, onClickClose }) => {
 
   useEffect(() => {
     load();
-    console.log(loadInfo);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
-    <UIModal isOpen={Boolean(promotionId)} onClickClose={onClickClose}>
+    <UIModal isOpen onClickClose={onClickClose}>
       <h1>Comentários no modal</h1>
     </UIModal>
   );
