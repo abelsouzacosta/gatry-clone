@@ -45,6 +45,18 @@ const PromotionModal = ({ promotionId, onClickClose }) => {
     } catch (error) {}
   }
 
+  async function sendAnswer(reply, parentId) {
+    await sendComment({
+      data: {
+        userId: 1,
+        promotionId,
+        comment: reply,
+        parentId,
+      },
+    });
+    load();
+  }
+
   return (
     <UIModal isOpen onClickClose={onClickClose}>
       <form className="promotion-modal-comment-form" onSubmit={onSubmit}>
@@ -57,7 +69,12 @@ const PromotionModal = ({ promotionId, onClickClose }) => {
           {sendComment.loading ? "Enviando..." : "Enviar"}
         </button>
       </form>
-      <PromotionModalCommentsTree comments={loadInfo.data} />
+      {/** setting key as 1 is completly hacky and is a bad practice - refactor */}
+      <PromotionModalCommentsTree
+        key="1"
+        comments={loadInfo.data}
+        sendComment={sendAnswer}
+      />
     </UIModal>
   );
 };
