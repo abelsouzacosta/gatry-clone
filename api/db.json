@@ -129,6 +129,13 @@
       "comment": "Mochila para notebook 15.6",
       "parentId": 5,
       "id": 6
+    },
+    {
+      "userId": 1,
+      "promotionId": 2,
+      "comment": "Essa é uma resposta",
+      "parentId": 3,
+      "id": 7
     }
   ],
   "users": [
