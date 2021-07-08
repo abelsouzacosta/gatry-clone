@@ -6,6 +6,7 @@
 
 .promotion-modal-comments-tree__item {
   display: flex;
+  margin-top: 15px;
 }
 
 .promotion-modal-comments-tree__item__avatar {
@@ -37,6 +38,10 @@
   margin-top: 10px;
   display: flex;
   align-items: flex-end;
+}
+
+.promotion-modal-comments-tree__comment-box textarea {
+  resize: none;
 }
 
 .promotion-modal-comments-tree__send-button {

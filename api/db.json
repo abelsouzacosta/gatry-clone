@@ -116,6 +116,12 @@
       "promotionId": 2,
       "comment": "",
       "id": 4
+    },
+    {
+      "userId": 1,
+      "promotionId": 1,
+      "comment": "Acompanha mochila!!",
+      "id": 5
     }
   ],
   "users": [
