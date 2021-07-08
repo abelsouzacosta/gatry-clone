@@ -2,7 +2,49 @@ import React, { useState } from "react";
 
 import "./CommentsTree.css";
 
+/**
+ * Receives a comment flat list
+ *
+ * Split the elements received in two distinct categories
+ * The first category are the elements that does not have a parentId
+ * these elements will be the root of the tree
+ *
+ * And the second are the elements that have a parentId
+ * @param {array} list - comment list
+ */
+function getTree(list) {
+  if (!list) {
+    return [];
+  }
+  const roots = [];
+  const childrenByParentId = {};
+
+  list.forEach((item) => {
+    if (!item.parentId) {
+      roots.push(item);
+      return;
+    }
+    if (!childrenByParentId[item.parentId]) {
+      childrenByParentId[item.parentId] = [];
+    }
+    childrenByParentId[item.parentId].push(item);
+  });
+
+  function buildNodes(nodes) {
+    if (!nodes) {
+      return null;
+    }
+    return nodes.map((node) => ({
+      ...node,
+      children: buildNodes(childrenByParentId[node.id]),
+    }));
+  }
+
+  return buildNodes(roots);
+}
+
 const PromotionModalCommentsTree = ({ comments, sendComment }) => {
+  console.log(getTree(comments));
   const [comment, setComment] = useState("");
   const [activeCommentBox, setActiveCommentBox] = useState(null);
   if (!comments) return <div>Carregando...</div>;
