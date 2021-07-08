@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 // componentes
 import PromotionList from "../List/List";
+import UIInfiniteScroll from "components/UI/InfiniteScroll/InfiniteScroll";
 
 import useApi from "components/utils/useApi";
 
@@ -20,6 +21,7 @@ const PromotionSearch = () => {
       _order: "desc",
       _sort: "id",
       _limit: 2,
+      _page: 1,
       title_like: search || undefined,
     },
     debouncedDelay: 300,
@@ -54,6 +56,7 @@ const PromotionSearch = () => {
         error={loadInfo.error}
         loading={loadInfo.loading}
       />
+      <UIInfiniteScroll />
     </div>
   );
 };
