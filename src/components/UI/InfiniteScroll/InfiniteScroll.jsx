@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 /**
  * Returns and empty div
@@ -7,7 +7,32 @@ import React from "react";
  * @returns
  */
 const UIInfiniteScroll = ({ fetchMore }) => {
-  return <div />;
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        observer.disconnect();
+        fetchMore();
+      }
+    }, options);
+
+    observer.observe(containerRef.current);
+
+    return () => {
+      observer.disconnect();
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return <div ref={containerRef} />;
 };
 
 export default UIInfiniteScroll;
