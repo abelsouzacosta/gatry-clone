@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import "./CommentsTree.css";
 
-const PromotionModalCommentsTree = ({ comments }) => {
+const PromotionModalCommentsTree = ({ comments, sendComment }) => {
+  const [comment, setComment] = useState("");
   const [activeCommentBox, setActiveCommentBox] = useState(null);
   if (!comments) return <div>Carregando...</div>;
 
@@ -27,20 +28,29 @@ const PromotionModalCommentsTree = ({ comments }) => {
               <button
                 type="button"
                 className="promotion-modal-comments-tree__answer-button"
-                onClick={(event) =>
+                onClick={(event) => {
                   setActiveCommentBox(
                     activeCommentBox === item.id ? null : item.id
-                  )
-                }
+                  );
+                  setComment("");
+                }}
               >
                 Reponder
               </button>
               {activeCommentBox === item.id && (
                 <div className="promotion-modal-comments-tree__comment-box">
-                  <textarea value="" onChange={() => {}} />
+                  <textarea
+                    value={comment}
+                    onChange={(event) => setComment(event.target.value)}
+                  />
                   <button
                     type="button"
                     className="promotion-modal-comments-tree__send-button"
+                    onClick={() => {
+                      sendComment(comment, item.id);
+                      setComment("");
+                      setActiveCommentBox(null);
+                    }}
                   >
                     Enviar
                   </button>
@@ -52,6 +62,12 @@ const PromotionModalCommentsTree = ({ comments }) => {
       })}
     </ul>
   );
+};
+
+PromotionModalCommentsTree.defaultProps = {
+  sendComment: (comment, parentId) => {
+    console.log({ comment, parentId });
+  },
 };
 
 export default PromotionModalCommentsTree;
