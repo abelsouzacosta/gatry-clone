@@ -17,7 +17,7 @@ const PromotionModal = ({ promotionId, onClickClose }) => {
     },
   });
 
-  const [sendComment, sendCommentInfo] = useApi({
+  const [sendComment] = useApi({
     url: "/comments",
     method: "post",
   });
