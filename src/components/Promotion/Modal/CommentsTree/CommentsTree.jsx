@@ -65,9 +65,7 @@ const PromotionModalCommentsTree = ({ comments, sendComment }) => {
 };
 
 PromotionModalCommentsTree.defaultProps = {
-  sendComment: (comment, parentId) => {
-    console.log({ comment, parentId });
-  },
+  sendComment: () => {},
 };
 
 export default PromotionModalCommentsTree;
