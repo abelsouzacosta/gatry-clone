@@ -1,6 +1,7 @@
 .promotion-modal-comments-tree {
   list-style: none;
   font-size: 14px;
+  padding-left: 0;
 }
 
 .promotion-modal-comments-tree__item {
