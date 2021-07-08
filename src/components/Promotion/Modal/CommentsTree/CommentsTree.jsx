@@ -29,6 +29,15 @@ const PromotionModalCommentsTree = ({ comments }) => {
               >
                 Reponder
               </button>
+              <div className="promotion-modal-comments-tree__comment-box">
+                <textarea value="" onChange={() => {}} />
+                <button
+                  type="button"
+                  className="promotion-modal-comments-tree__send-button"
+                >
+                  Enviar
+                </button>
+              </div>
             </div>
           </li>
         );
