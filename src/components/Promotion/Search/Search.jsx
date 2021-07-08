@@ -19,6 +19,7 @@ const PromotionSearch = () => {
       _embed: "comments",
       _order: "desc",
       _sort: "id",
+      _limit: 2,
       title_like: search || undefined,
     },
     debouncedDelay: 300,

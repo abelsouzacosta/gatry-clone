@@ -90,6 +90,34 @@
       "imageUrl": "https://www.fastshop.com.br/wcsstore/FastShopCAS/imagens/_UT_Utilidades/MLPRESTIGEPTA/MLPRESTIGEPTA_PRD_1500_1.jpg",
       "price": "6043,50",
       "id": 14
+    },
+    {
+      "title": "Processador Intel Core i7-10700 Octa-Core 2.9GHz (4.8GHz Turbo) 16MB Cache LGA1200, BX8070110700",
+      "url": "https://www.pichau.com.br/processador-intel-core-i7-10700-octa-core-2-9ghz-4-8ghz-turbo-16mb-cache-lga1200-bx8070110700",
+      "imageUrl": "https://media.pichau.com.br/media/catalog/product/cache/2f958555330323e505eba7ce930bdf27/b/x/bx8070110700.jpg",
+      "price": "1.649,97",
+      "id": 15
+    },
+    {
+      "title": "iphone 12 pro apple (128gb) azul-pacífico tela 6,1\" câmera tripla 12mp ios",
+      "url": "https://www.submarino.com.br/produto/2290962995?pfm_carac=iphone-12-pro&pfm_index=7&pfm_page=search&pfm_pos=grid&pfm_type=search_page&opn=AFLNOVOSUB&epar=AF_00_00_AB_SUBA&franq=22195_1625773037_de5b18cdece8736575cee557e4490728&afpid=904991&awc=22195_1625773037_de5b18cdece8736575cee557e4490728",
+      "imageUrl": "https://images-submarino.b2w.io/produtos/01/00/img/2290963/0/2290963066_1GG.jpg",
+      "price": "R$ 6.974,07",
+      "id": 16
+    },
+    {
+      "title": "Geladeira/Refrigerador Midea Frost Free - French Door 482L RF5562 ",
+      "url": "https://www.magazinevoce.com.br/magazinegatry/geladeirarefrigerador-midea-frost-free-french-door-482l-rf5562/p/227393900/ED/GRFD/",
+      "imageUrl": "https://a-static.mlcdn.com.br/618x463/geladeira-refrigerador-midea-frost-free-french-door-482l-rf5562/magazineluiza/227393900/4bcdbc0cb65967701a5e79a045d3edfa.jpg",
+      "price": "4.331,10",
+      "id": 17
+    },
+    {
+      "title": "Projetor LG CineBeam Smart TV 140, UHD 4K, HDR10, 1500 ANSI Lumens, HDMI/USB - HU70LA",
+      "url": "https://www.kabum.com.br/cgi-local/site/produtos/descricao_ofertas.cgi?codigo=112807&awc=17729_1625776883_34a5fa73b510d87c20f8e35dea2bbf17&utm_source=AWIN&utm_medium=AFILIADOS&utm_campaign=homeessentials_jul21&utm_content=home&utm_term=http%3A%2F%2Fgatry.com",
+      "imageUrl": "https://images7.kabum.com.br/produtos/fotos/112807/projetor-lg-cinebeam-smart-tv-uhd-4k-1500-ansi-lumens-hdmi-usb-bluetooth-wi-fi-branco-hu70la-awz_1588177271_gg.jpg",
+      "price": "5.399,11",
+      "id": 18
     }
   ],
   "comments": [
@@ -116,6 +144,18 @@
       "promotionId": 2,
       "comment": "",
       "id": 4
+    },
+    {
+      "userId": 1,
+      "promotionId": 16,
+      "comment": "Muito barato",
+      "id": 5
+    },
+    {
+      "userId": 1,
+      "promotionId": 18,
+      "comment": "O melhor preço que eu já vi",
+      "id": 6
     }
   ],
   "users": [
