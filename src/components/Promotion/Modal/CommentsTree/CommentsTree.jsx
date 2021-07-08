@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./CommentsTree.css";
 
 const PromotionModalCommentsTree = ({ comments }) => {
+  const [isCommentsBoxVisible, setCommentsBoxVisible] = useState(false);
   if (!comments) return <div>Carregando...</div>;
 
   if (comments.length === 0)
@@ -26,18 +27,23 @@ const PromotionModalCommentsTree = ({ comments }) => {
               <button
                 type="button"
                 className="promotion-modal-comments-tree__answer-button"
+                onClick={(event) =>
+                  setCommentsBoxVisible(!isCommentsBoxVisible)
+                }
               >
                 Reponder
               </button>
-              <div className="promotion-modal-comments-tree__comment-box">
-                <textarea value="" onChange={() => {}} />
-                <button
-                  type="button"
-                  className="promotion-modal-comments-tree__send-button"
-                >
-                  Enviar
-                </button>
-              </div>
+              {isCommentsBoxVisible && (
+                <div className="promotion-modal-comments-tree__comment-box">
+                  <textarea value="" onChange={() => {}} />
+                  <button
+                    type="button"
+                    className="promotion-modal-comments-tree__send-button"
+                  >
+                    Enviar
+                  </button>
+                </div>
+              )}
             </div>
           </li>
         );
