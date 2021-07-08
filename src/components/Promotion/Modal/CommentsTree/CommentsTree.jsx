@@ -23,6 +23,12 @@ const PromotionModalCommentsTree = ({ comments }) => {
                 {item.user.name}
               </span>
               <p>{item.comment}</p>
+              <button
+                type="button"
+                className="promotion-modal-comments-tree__answer-button"
+              >
+                Reponder
+              </button>
             </div>
           </li>
         );

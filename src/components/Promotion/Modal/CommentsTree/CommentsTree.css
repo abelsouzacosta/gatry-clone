@@ -17,8 +17,18 @@
 
 .promotion-modal-comments-tree__item__info p {
   margin-top: 5px;
+  margin-bottom: 0;
 }
 
 .promotion-modal-comments-tree__item__name {
   font-weight: 600;
+}
+
+.promotion-modal-comments-tree__answer-button {
+  background: transparent;
+  border: 0;
+  color: #3498db;
+  cursor: pointer;
+  margin-top: 5px;
+  padding: 0;
 }
